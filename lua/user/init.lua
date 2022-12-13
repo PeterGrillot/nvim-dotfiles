@@ -5,6 +5,7 @@ local config = {
         --colorscheme = "catppuccin",
         --colorscheme = "sonokai",
         colorscheme = "neodark",
+        --colorscheme = "tokyonight",
 
         -- Configure AstroNvim updates
         updater = {
@@ -18,20 +19,15 @@ local config = {
                 show_changelog = true, -- show the changelog after performing an update
                 auto_reload = false, -- automatically reload and sync packer after a successful update
                 auto_quit = false, -- automatically quit the current session after a successful update
-                -- remotes = { -- easily add new remotes to track
-                --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
-                --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
-                --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
-                -- },
         },
         -- Add highlight groups in any theme
         highlights = {
-                -- init = { -- this table overrides highlights in all themes
-                --   Normal = { bg = "#000000" },
-                -- }
-                -- duskfox = { -- a table of overrides/changes to the duskfox theme
-                --   Normal = { bg = "#000000" },
-                -- },
+                neodark = { -- this table overrides highlights in all themes
+                        Normal = { bg = "#111111" },
+
+                        DashboardHeader = { fg = "#66cdaa" },
+                        DashboardCenter = { fg = "#77edaa" },
+                }
         },
 
         -- set vim options here (vim.<first_key>.<second_key> = value)
@@ -84,13 +80,11 @@ local config = {
                         cyan_light = "#c1f5e3",
                 },
                 highlights = function(hl) -- or a function that returns a new table of colors to set
-                        local C = require "default_theme.colors"
+                        -- local C = require "default_theme.colors"
                         hl.DiagnosticError.italic = true
                         hl.DiagnosticHint.italic = true
                         hl.DiagnosticInfo.italic = true
                         hl.DiagnosticWarn.italic = true
-                        hl.DashboardHeader.fg = C.cyan
-                        hl.DashboardCenter.fg = C.cyan
 
                         return hl
                 end,
@@ -181,21 +175,15 @@ local config = {
                 },
         },
 
-        -- Mapping data with "desc" stored directly by vim.keymap.set().
-        --
-        -- Please use this mappings table to set keyboard mapping since this is the
-        -- lower level configuration and more robust one. (which-key will
-        -- automatically pick-up stored data by this setting.)
+        -- Use this mappings table to set keyboard mapping since this is the
         mappings = {
                 -- first key is the mode
                 n = {
                         -- second key is the lefthand side of the map
-                        -- mappings seen under group name "Buffer"
                         ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
                         ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
                         ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
                         ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-                        -- quick save
                         ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
                         ["<S-Up>"] = { ":m-2<cr>", desc = "Move Up" }, -- change description but the same command
                         ["<S-Down>"] = { ":m+1<cr>", desc = "Move Down" }, -- change description but the same command
@@ -213,8 +201,7 @@ local config = {
                         -- ["goolord/alpha-nvim"] = { disable = true },
 
                         -- You can also add new plugins here as well:
-                        -- Add plugins, the packer syntax without the "use"
-                        -- { "andweeb/presence.nvim" },
+                        { "folke/tokyonight.nvim" },
                         { "sainnhe/sonokai" },
                         {
                                 "catppuccin/nvim",
@@ -226,6 +213,7 @@ local config = {
                         {
                                 "VDuchauffour/neodark.nvim",
                                 as = "neodark",
+                                event = "BufRead",
                                 config = function()
                                         require("neodark").setup({
                                                 theme_style = "neodarker"
