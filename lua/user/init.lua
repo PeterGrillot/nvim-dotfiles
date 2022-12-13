@@ -90,7 +90,7 @@ local config = {
                         hl.DiagnosticInfo.italic = true
                         hl.DiagnosticWarn.italic = true
                         hl.DashboardHeader.fg = C.cyan
-                        hl.DashboardCenter.fg = C.cyan_light
+                        hl.DashboardCenter.fg = C.cyan
 
                         return hl
                 end,
@@ -232,6 +232,7 @@ local config = {
                                         })
                                 end,
                         },
+                        { "leafgarland/typescript-vim" },
                         -- We also support a key value style plugin definition similar to NvChad:
                         -- ["ray-x/lsp_signature.nvim"] = {
                         --   event = "BufRead",
