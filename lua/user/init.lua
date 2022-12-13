@@ -1,10 +1,8 @@
---              AstroNvim Configuration Table
--- All configuration changes should go inside of the table below
+-- AstroNvim Custom Configuration Table
 local config = {
-        -- ColorScheme
+        colorscheme = "neodark",
         --colorscheme = "catppuccin",
         --colorscheme = "sonokai",
-        colorscheme = "neodark",
         --colorscheme = "tokyonight",
 
         -- Configure AstroNvim updates
@@ -24,8 +22,7 @@ local config = {
         highlights = {
                 neodark = { -- this table overrides highlights in all themes
                         Normal = { bg = "#111111" },
-
-                        DashboardHeader = { fg = "#66cdaa" },
+                        DashboardHeader = { fg = "#77edaa" },
                         DashboardCenter = { fg = "#77edaa" },
                 }
         },
@@ -76,8 +73,6 @@ local config = {
         default_theme = {
                 -- Modify the color palette for the default theme
                 colors = {
-                        cyan = "#66cdaa",
-                        cyan_light = "#c1f5e3",
                 },
                 highlights = function(hl) -- or a function that returns a new table of colors to set
                         -- local C = require "default_theme.colors"
@@ -114,7 +109,7 @@ local config = {
 
         -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
         diagnostics = {
-                virtual_text = true,
+                virtual_text = false,
                 underline = true,
         },
 
@@ -198,7 +193,7 @@ local config = {
         plugins = {
                 init = {
                         -- You can disable default plugins as follows:
-                        -- ["goolord/alpha-nvim"] = { disable = true },
+                        -- ["rebelot/heirline.nvim"] = { disable = true },
 
                         -- You can also add new plugins here as well:
                         { "folke/tokyonight.nvim" },
@@ -213,7 +208,6 @@ local config = {
                         {
                                 "VDuchauffour/neodark.nvim",
                                 as = "neodark",
-                                event = "BufRead",
                                 config = function()
                                         require("neodark").setup({
                                                 theme_style = "neodarker"
@@ -221,13 +215,12 @@ local config = {
                                 end,
                         },
                         { "leafgarland/typescript-vim" },
-                        -- We also support a key value style plugin definition similar to NvChad:
-                        -- ["ray-x/lsp_signature.nvim"] = {
-                        --   event = "BufRead",
-                        --   config = function()
-                        --     require("lsp_signature").setup()
-                        --   end,
-                        -- },
+                        {
+                                "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+                                config = function()
+                                        require("lsp_lines").setup()
+                                end,
+                        }
                 },
                 -- All other entries override the require("<key>").setup({...}) call for default plugins
                 ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
