@@ -251,6 +251,15 @@ local config = {
                 ["mason-nvim-dap"] = { -- overrides `require("mason-nvim-dap").setup(...)`
                         -- ensure_installed = { "python" },
                 },
+                ["neo-tree"] = {
+                        filesystem = {
+                                filtered_items = {
+                                        visible = true,
+                                        hide_dotfiles = false,
+                                        hide_gitignore = false,
+                                }
+                        }
+                }
         },
 
         -- LuaSnip Options
