@@ -109,7 +109,7 @@ local config = {
 
         -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
         diagnostics = {
-                virtual_text = false,
+                virtual_text = true,
                 underline = true,
         },
 
@@ -215,12 +215,12 @@ local config = {
                                 end,
                         },
                         { "leafgarland/typescript-vim" },
-                        {
-                                "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-                                config = function()
-                                        require("lsp_lines").setup()
-                                end,
-                        }
+                        -- {
+                        --         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+                        --         config = function()
+                        --                 require("lsp_lines").setup()
+                        --         end,
+                        -- }
                 },
                 -- All other entries override the require("<key>").setup({...}) call for default plugins
                 ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
