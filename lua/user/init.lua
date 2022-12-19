@@ -1,9 +1,9 @@
 -- AstroNvim Custom Configuration Table
 local config = {
-        colorscheme = "neodark",
-        --colorscheme = "catppuccin",
+        -- colorscheme = "neodark",
+        -- colorscheme = "catppuccin",
         --colorscheme = "sonokai",
-        --colorscheme = "tokyonight",
+        colorscheme = "tokyonight",
 
         -- Configure AstroNvim updates
         updater = {
@@ -21,7 +21,7 @@ local config = {
         -- Add highlight groups in any theme
         highlights = {
                 neodark = { -- this table overrides highlights in all themes
-                        Normal = { bg = "#111111" },
+                        -- Normal = { bg = "#111111" },
                         DashboardHeader = { fg = "#77edaa" },
                         DashboardCenter = { fg = "#77edaa" },
                 }
