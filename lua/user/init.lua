@@ -20,8 +20,8 @@ local config = {
         },
         -- Add highlight groups in any theme
         highlights = {
-                neodark = { -- this table overrides highlights in all themes
-                        -- Normal = { bg = "#111111" },
+                tokyonight = { -- this table overrides highlights in all themes
+                        Normal = { bg = "#15171f" },
                         DashboardHeader = { fg = "#77edaa" },
                         DashboardCenter = { fg = "#77edaa" },
                 }
