@@ -144,35 +144,15 @@ local config = {
                                 -- ["<leader>lf"] = false -- disable formatting keymap
                         },
                 },
-                -- add to the global LSP on_attach function
-                -- on_attach = function(client, bufnr)
-                -- end,
-
-                -- override the mason server-registration function
-                -- server_registration = function(server, opts)
-                --   require("lspconfig")[server].setup(opts)
-                -- end,
-
                 -- Add overrides for LSP server settings, the keys are the name of the server
                 ["server-settings"] = {
-                        -- example for addings schemas to yamlls
                         -- yamlls = { -- override table for require("lspconfig").yamlls.setup({...})
-                        --   settings = {
-                        --     yaml = {
-                        --       schemas = {
-                        --         ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
-                        --         ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-                        --         ["http://json.schemastore.org/ansible-stable-2.9"] = "roles/tasks/*.{yml,yaml}",
-                        --       },
-                        --     },
-                        --   },
-                        -- },
                 },
         },
 
-        -- Use this mappings table to set keyboard mapping since this is the
+        -- Keymappings
         mappings = {
-                -- first key is the mode
+                -- Normal mode
                 n = {
                         -- second key is the lefthand side of the map
                         ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
@@ -182,6 +162,8 @@ local config = {
                         ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
                         ["<S-Up>"] = { ":m-2<cr>", desc = "Move Up" }, -- change description but the same command
                         ["<S-Down>"] = { ":m+1<cr>", desc = "Move Down" }, -- change description but the same command
+                        ["<C-d>"] = { "yyp", desc = "Dupe Down" }, -- change description but the same command
+                        ["r"] = { "<C-R>", desc = "Redo" }, -- change description but the same command
                 },
                 t = {
                         -- setting a mapping to false will disable it
@@ -195,7 +177,7 @@ local config = {
                         -- You can disable default plugins as follows:
                         -- ["rebelot/heirline.nvim"] = { disable = true },
 
-                        -- You can also add new plugins here as well:
+                        -- Plugins
                         { "folke/tokyonight.nvim" },
                         { "sainnhe/sonokai" },
                         {
@@ -225,14 +207,8 @@ local config = {
                 -- All other entries override the require("<key>").setup({...}) call for default plugins
                 ["null-ls"] = function(config) -- overrides `require("null-ls").setup(config)`
                         -- config variable is the default configuration table for the setup function call
-                        -- local null_ls = require "null-ls"
-
-                        -- Check supported formatters and linters
-                        -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-                        -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
                         config.sources = {
                                 -- Set a formatter
-                                -- null_ls.builtins.formatting.stylua,
                                 -- null_ls.builtins.formatting.prettier,
                         }
                         return config -- return final config table
@@ -257,6 +233,9 @@ local config = {
                                         visible = true,
                                         hide_dotfiles = false,
                                         hide_gitignore = false,
+                                        never_show = {
+                                                ".DS_Store"
+                                        }
                                 }
                         }
                 }
@@ -276,11 +255,8 @@ local config = {
         },
 
         -- CMP Source Priorities
-        -- modify here the priorities of default cmp sources
         -- higher value == higher priority
-        -- The value can also be set to a boolean for disabling default sources:
-        -- false == disabled
-        -- true == 1000
+        -- The value can also be set to a boolean for disabling default sources
         cmp = {
                 source_priority = {
                         nvim_lsp = 1000,
@@ -306,8 +282,7 @@ local config = {
                 },
         },
 
-        -- This function is run last and is a good place to configuring
-        -- augroups/autocommands and custom filetypes also this just pure lua so
+        -- This function is run last
         -- anything that doesn't fit in the normal config locations above can go here
         polish = function()
                 -- Set up custom filetypes
