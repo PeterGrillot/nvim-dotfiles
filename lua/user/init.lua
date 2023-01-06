@@ -152,20 +152,20 @@ local config = {
 
         -- Keymappings
         mappings = {
-                -- Normal mode
                 n = {
                         -- second key is the lefthand side of the map
                         ["<leader>bb"] = { "<cmd>tabnew<cr>", desc = "New tab" },
                         ["<leader>bc"] = { "<cmd>BufferLinePickClose<cr>", desc = "Pick to close" },
                         ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
                         ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
-                        ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
-                        ["<S-Up>"] = { ":m-2<cr>", desc = "Move Up" }, -- change description but the same command
-                        ["<S-Down>"] = { ":m+1<cr>", desc = "Move Down" }, -- change description but the same command
-                        ["<C-d>"] = { "yyp", desc = "Dupe Down" }, -- change description but the same command
-                        ["r"] = { "<C-R>", desc = "Redo" }, -- change description but the same command
+                        ["<C-s>"] = { ":w!<cr>", desc = "Save File" },
+                        ["<S-Up>"] = { ":m-2<cr>", desc = "Move Up" },
+                        ["<S-Down>"] = { ":m+1<cr>", desc = "Move Down" },
+                        ["<C-d>"] = { "yyp", desc = "Dupe Down" },
+                        ["r"] = { "<C-R>", desc = "Redo" },
                 },
                 t = {
+                        ["<S-j>"] = false,
                         -- setting a mapping to false will disable it
                         -- ["<esc>"] = false,
                 },
