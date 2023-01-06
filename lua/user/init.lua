@@ -163,9 +163,9 @@ local config = {
                         ["<S-Down>"] = { ":m+1<cr>", desc = "Move Down" },
                         ["<C-d>"] = { "yyp", desc = "Dupe Down" },
                         ["r"] = { "<C-R>", desc = "Redo" },
+                        ["<S-j>"] = { ":set invwrap<cr>", desc = "Toggle Wrap" },
                 },
                 t = {
-                        ["<S-j>"] = false,
                         -- setting a mapping to false will disable it
                         -- ["<esc>"] = false,
                 },
