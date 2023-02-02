@@ -6,24 +6,31 @@ local config = {
         colorscheme = "tokyonight",
 
         -- Configure AstroNvim updates
-        updater = {
-                remote = "origin", -- remote to use
-                channel = "nightly", -- "stable" or "nightly"
-                version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
-                branch = "main", -- branch name (NIGHTLY ONLY)
-                commit = nil, -- commit hash (NIGHTLY ONLY)
-                pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
-                skip_prompts = false, -- skip prompts about breaking changes
-                show_changelog = true, -- show the changelog after performing an update
-                auto_reload = false, -- automatically reload and sync packer after a successful update
-                auto_quit = false, -- automatically quit the current session after a successful update
-        },
+        -- TODO: Fix when this is updated
+        -- updater = {
+        --         remote = "origin", -- remote to use
+        --         channel = "stable", -- "stable" or "nightly"
+        --         version = "latest", -- "latest", tag name, or regex search like "v1.*" to only do updates before v2 (STABLE ONLY)
+        --         branch = "main", -- branch name (NIGHTLY ONLY)
+        --         commit = nil, -- commit hash (NIGHTLY ONLY)
+        --         pin_plugins = nil, -- nil, true, false (nil will pin plugins on stable only)
+        --         skip_prompts = false, -- skip prompts about breaking changes
+        --         show_changelog = true, -- show the changelog after performing an update
+        --         auto_reload = false, -- automatically reload and sync packer after a successful update
+        --         auto_quit = false, -- automatically quit the current session after a successful update
+        --         -- remotes = { -- easily add new remotes to track
+        --         --   ["remote_name"] = "https://remote_url.come/repo.git", -- full remote url
+        --         --   ["remote2"] = "github_user/repo", -- GitHub user/repo shortcut,
+        --         --   ["remote3"] = "github_user", -- GitHub user assume AstroNvim fork
+        --         -- },
+        -- },
         -- Add highlight groups in any theme
         highlights = {
                 tokyonight = { -- this table overrides highlights in all themes
                         Normal = { bg = "#15171f" },
                         DashboardHeader = { fg = "#77edaa" },
                         DashboardCenter = { fg = "#77edaa" },
+                        StatusLine = { fg = "#5E4daa", bg = "#222222" },
                 }
         },
 
@@ -197,6 +204,8 @@ local config = {
                                 end,
                         },
                         { "leafgarland/typescript-vim" },
+                        { "neoclide/vim-jsx-improve" },
+                        { "f-person/git-blame.nvim" },
                         -- {
                         --         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
                         --         config = function()
@@ -297,6 +306,14 @@ local config = {
                 --     ["~/%.config/foo/.*"] = "fooscript",
                 --   },
                 -- }
+                vim.api.nvim_create_autocmd("FileType", {
+                        pattern = { "markdown", "txt" },
+                        callback = function()
+                                vim.wo.spell = true
+                                vim.wo.wrap = true;
+                                vim.opt.linebreak = true;
+                        end,
+                })
         end,
 }
 
